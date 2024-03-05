@@ -55,7 +55,7 @@ const userSchema = new Schema(
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next(); // if user not modified passward then return
 
-  this.password = bcrypt.hash(this.password, 10); //else
+  this.password = await bcrypt.hash(this.password, 10); //else
   next();
 });
 
