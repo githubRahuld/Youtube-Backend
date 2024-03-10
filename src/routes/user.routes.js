@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
   createNewPassword,
-  getCurrentuser,
+  getCurrentUser,
   getUserChannelProfile,
   getWatchHistory,
   loginUser,
@@ -42,7 +42,7 @@ router.route("/refresh-token").post(refreshAccessToken);
 
 router.route("/change-password").post(verifyJWT, createNewPassword);
 
-router.route("/current-user").get(verifyJWT, getCurrentuser);
+router.route("/current-user").get(verifyJWT, getCurrentUser);
 
 // patch: used tp update espacific data
 router.route("/update-account").patch(verifyJWT, updateUserDetails);
@@ -52,9 +52,9 @@ router.route("/avatar").patch(verifyJWT, upload.single("avatar"), updateAvatar);
 
 router
   .route("/cover-image")
-  .patch(verifyJWT, upload.single("/coverImage"), updateCoverImage);
+  .patch(verifyJWT, upload.single("coverImage"), updateCoverImage);
 
-router.route("/c/:username").get(verifyJWT, getUserChannelProfile);
+router.route("/c/:username").get(verifyJWT, getUserChannelProfile); // username get from params
 
 router.route("/history").get(verifyJWT, getWatchHistory);
 
