@@ -375,7 +375,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
       $lookup: {
         from: "subscriptions", //document name
         localField: "_id",
-        foreignField: "channel",
+        foreignField: "channel", // channels are users
         as: "subscribers", // name of the new field
       },
     },
@@ -441,7 +441,7 @@ const getWatchHistory = asyncHandler(async (req, res) => {
   const user = await User.aggregate([
     {
       $match: {
-        _id: new mongoose.Types.ObjectId(req.user._id), //create new mongoose object
+        _id: mongoose.Types.ObjectId(req.user._id), //create new mongoose object
       },
     },
     {

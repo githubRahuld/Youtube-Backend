@@ -23,7 +23,7 @@ const videoSchema = new Schema(
       type: Number,
       default: 0,
     },
-    isPublised: {
+    isPublished: {
       type: Boolean,
       default: true,
     },
@@ -35,6 +35,7 @@ const videoSchema = new Schema(
   { timestamps: true }
 );
 
+// for pagination
 videoSchema.plugin(mongooseAggregatePaginate);
 
 export const Video = mongoose.model("Video", videoSchema);

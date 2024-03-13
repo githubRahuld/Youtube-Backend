@@ -24,4 +24,4 @@ const palylistSchema = new Schema(
   { timestamps: true }
 );
 
-export const Like = mongoose.model("Playlist", palylistSchema);
+export const Playlist = mongoose.model("Playlist", palylistSchema);
